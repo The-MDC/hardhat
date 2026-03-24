@@ -83,6 +83,7 @@ describe("isScenarioDefinition", () => {
         packageManager: "npm",
         tags: [],
         disabled: false,
+        defaultCommand: "npx hardhat test",
       }),
       false,
     );
@@ -132,6 +133,8 @@ describe("isScenarioDefinition", () => {
         commit: "abc",
         packageManager: "pnpm",
         tags: [],
+        description: "a scenario",
+        defaultCommand: "npx hardhat test",
       }),
       false,
     );
