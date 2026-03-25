@@ -13,6 +13,7 @@ import { deepClone } from "@nomicfoundation/hardhat-utils/lang";
 import { AsyncMutex } from "@nomicfoundation/hardhat-utils/synchronization";
 
 import { isJsonRpcResponse } from "../json-rpc.js";
+import { createHandlersArray } from "../request-handlers/handlers-array.js";
 
 export default async (): Promise<Partial<NetworkHooks>> => {
   // This map is essential for managing multiple network connections in Hardhat V3.
@@ -38,10 +39,6 @@ export default async (): Promise<Partial<NetworkHooks>> => {
         nextJsonRpcRequest: JsonRpcRequest,
       ) => Promise<JsonRpcResponse>,
     ) {
-      const { createHandlersArray } = await import(
-        "../request-handlers/handlers-array.js"
-      );
-
       const requestHandlers = await initializationMutex.exclusiveRun(
         async () => {
           let handlersPerConnection =
