@@ -7,6 +7,7 @@ import type {
   JsonRpcRequest,
   JsonRpcResponse,
 } from "../../../../types/providers.js";
+import { createHandlersArray } from "../request-handlers/handlers-array.js";
 import type { RequestHandler } from "../request-handlers/types.js";
 
 import { deepClone } from "@nomicfoundation/hardhat-utils/lang";
@@ -38,10 +39,6 @@ export default async (): Promise<Partial<NetworkHooks>> => {
         nextJsonRpcRequest: JsonRpcRequest,
       ) => Promise<JsonRpcResponse>,
     ) {
-      const { createHandlersArray } = await import(
-        "../request-handlers/handlers-array.js"
-      );
-
       const requestHandlers = await initializationMutex.exclusiveRun(
         async () => {
           let handlersPerConnection =
