@@ -53,13 +53,13 @@
     "rimraf": "^5.0.5",
     "tsx": "^4.19.3",
     "typescript": "~5.8.0",
-    "zod": "^3.23.8"
+    "zod": "^4.6.6"
   },
   "dependencies": {
     "@nomicfoundation/hardhat-errors": "workspace:^3.0.7",
     "@nomicfoundation/hardhat-utils": "workspace:^4.0.0"
   },
   "peerDependencies": {
-    "zod": "^3.23.8"
+    "zod": "^4.6.6"
   }
 }
